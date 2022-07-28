@@ -1,0 +1,22 @@
+syntax = "proto3"; // 版本声明，使用 Protocol Buffers v3 版本
+
+option go_package = "trial_grpc_server/pb;pb"; // 指定编译生成的文件目录，也可以指定 golang 包名  // 分号前是编译生成的.pb.go文件存放地址，分号后是所属包名，这个包名覆盖默认包名
+
+package pb; // 默认包名
+
+
+// 定义服务
+service Greeter { // 接待员服务, service 对应的是 golang 中的接口
+    // SayHello 方法
+    rpc SayHello (HelloRequest) returns (HelloResponse) {}
+}
+
+// 请求消息
+message HelloRequest { // message 是需要传输的数据格式的定义，对应 golang 中的结构体
+    string name = 1;
+}
+
+// 响应消息
+message HelloResponse {
+    string replay = 1;
+}
